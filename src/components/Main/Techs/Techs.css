@@ -15,6 +15,8 @@
   font-size: 50px;
   line-height: 58px;
   font-weight: normal;
+  margin-top: 90px;
+  margin-bottom: 26px;
 }
 
 .techs__subtitle {
@@ -26,17 +28,25 @@
 }
 
 .techs__list {
+  width: calc(100% - 450px);
+  margin: auto;
   margin-top: 100px;
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
+  padding: 0;
   padding-bottom: 100px;
+  
 }
 
 .techs__point {
   background-color: #303030;
   text-align: center;
-  padding: 21px;
+  padding-top: 21px;
+  padding-bottom: 21px;
   border-radius: 10px;
+  width: 90px;
+  justify-self: center;
+  margin: 0;
 }
