@@ -1,5 +1,6 @@
-.header_main-landing {
+.header {
   background: #073042;
+  width: 100%;
 }
 
 .header__wrap {

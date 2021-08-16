@@ -2,6 +2,8 @@
   background-color: #202020;
   color: #FFF;
   font-family: 'Inter', Arial, sans-serif;
+  width: 100%;
+  max-width: none;
 }
 
 .section__heading {
@@ -13,3 +15,4 @@
   padding-bottom: 23px;
   margin: 0;
 }
+

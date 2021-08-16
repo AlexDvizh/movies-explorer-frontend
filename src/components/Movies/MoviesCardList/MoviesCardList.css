@@ -1,0 +1,10 @@
+.movies-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 38px 20px;
+  width: calc(100% - 140px);
+  margin: auto;
+  margin-top: 80px;
+  grid-auto-flow: row;
+}

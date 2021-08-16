@@ -1,0 +1,23 @@
+.preloader {
+  width: calc(100% - 140px);
+  margin: auto;
+}
+
+.preloader__button {
+  background-color: #2F2F2F;
+  border: none;
+  color: #FFF;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.preloader__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

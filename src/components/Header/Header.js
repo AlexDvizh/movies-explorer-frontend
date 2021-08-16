@@ -6,7 +6,7 @@ import logo from '../../images/logo.svg';
 function Header() {
   
   return (
-    <header className="header header_main-landing">
+    <header className="header">
       <div className="header__wrap">
         <img className="header__logo" src={logo} alt="Логотип"></img>
         <div className="header__auth">

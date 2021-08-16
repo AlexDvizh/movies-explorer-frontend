@@ -1,0 +1,64 @@
+.navigation {
+  width: calc(100% - 140px);
+  margin: auto;
+}
+
+.navigation__wrap {
+  padding: 18px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navigation__info {
+  align-self: center;
+}
+
+.navigation__link {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.navigation__link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.navigation__link_movie {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.navigation__link_save-movie {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  margin-left: 16px;
+}
+
+.account-button {
+  border: 1px solid rgb(170, 170, 170, 0.6);
+  background-color: #2F2F2F;
+  color: #FFF;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+}
+
+.account-button__text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.account-button__icon {
+  background-image: url(../../images/icon-account.svg);
+  width: 10px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-self: center;
+  margin-right: 7px;
+}

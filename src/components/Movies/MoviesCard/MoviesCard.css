@@ -1,0 +1,39 @@
+.card__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #424242;
+  max-width: 270px;
+}
+
+.card__text {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.card__like {
+  background-color: #313131;
+  border:none;
+  border-radius: 36px;
+  background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  align-self: center;
+  background-position: center;
+}
+
+.card__like:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.card__time {
+  color: #8B8B8B;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0;
+  margin-top: 6px;
+}
