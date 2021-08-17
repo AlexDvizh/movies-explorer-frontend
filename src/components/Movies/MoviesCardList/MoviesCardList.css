@@ -8,3 +8,27 @@
   margin-top: 80px;
   grid-auto-flow: row;
 }
+
+.more-movies {
+  width: calc(100% - 140px);
+  margin: auto;
+}
+
+.more-movies__button {
+  background-color: #2F2F2F;
+  border: none;
+  color: #FFF;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.more-movies__button:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}

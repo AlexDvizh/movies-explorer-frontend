@@ -8,14 +8,16 @@ function Navigation() {
   return (
     <header className="navigation">
       <div className="navigation__wrap">
-        <img className="navigation__logo" src={logo} alt="Логотип"></img>
+        <a href="/">
+          <img className="navigation__logo" src={logo} alt="Логотип"></img>
+        </a>
         <div className="navigation__info">
-          <a className="navigation__link navigation__link_movie" href="/">Фильмы</a>
-          <a className="navigation__link navigation__link_save-movie" href="/">Сохраненные фильмы</a>
+          <a className="navigation__link navigation__link_movie" href="/movies">Фильмы</a>
+          <a className="navigation__link navigation__link_save-movie" href="/saved-movies">Сохраненные фильмы</a>
         </div>
         <button className="account-button">
           <div className="account-button__icon"></div>
-          <p className="account-button__text">Аккаунт</p>
+          <a className="account-button__text" href="/profile">Аккаунт</a>
         </button>
       </div>
     </header>
