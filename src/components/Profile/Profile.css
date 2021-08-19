@@ -1,3 +1,7 @@
+.profile {
+  margin-bottom: 70px;
+}
+
 .profile__wrap {
   width: calc(100% - 140px);
   margin: auto;
@@ -85,4 +89,14 @@
 .profile__link:hover {
   opacity: 0.6;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .profile_title {
+      margin: 236px 0 96px;
+  }
+
+  .profile {
+    margin-bottom: 269px;
+  }
 }

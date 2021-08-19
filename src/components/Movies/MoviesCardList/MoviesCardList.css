@@ -1,17 +1,14 @@
-.movies-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 38px 20px;
+.movies-cards {
   width: calc(100% - 140px);
   margin: auto;
-  margin-top: 80px;
-  grid-auto-flow: row;
 }
 
-.more-movies {
-  width: calc(100% - 140px);
-  margin: auto;
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 270px);
+  gap: 38px 20px;
+  margin-top: 75px;
+  grid-auto-flow: row;
 }
 
 .more-movies__button {
@@ -31,4 +28,15 @@
 .more-movies__button:hover{
   opacity: 0.5;
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .movies-cards {
+    width: calc(100% - 60px);
+  }
+
+  .movies-list {
+    grid-template-columns: repeat(auto-fit, 339px);
+    gap: 30px;
+  }
 }

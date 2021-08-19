@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding-bottom: 13px;
   border-bottom: 1px solid #424242;
-  max-width: 270px;
+  width: 100%;
 }
 
 .card__text {
@@ -40,4 +40,8 @@
   line-height: 13px;
   margin: 0;
   margin-top: 6px;
+}
+
+.card__img {
+  width: 100%;
 }

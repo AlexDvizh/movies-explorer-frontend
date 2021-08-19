@@ -66,3 +66,31 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .about-me {
+      width: calc(100% - 100px);
+  }
+
+  .content-block__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .content-block__proffesion {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 16px 0 20px 0;
+  }
+
+  .content-block__about {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .content-block__img {
+    max-width: 255px;
+    max-height: 307px;
+    margin-left: 49px;
+  }
+}

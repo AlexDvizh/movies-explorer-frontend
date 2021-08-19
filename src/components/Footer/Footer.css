@@ -44,3 +44,9 @@
   font-size: 13px;
   line-height: 16px;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+      width: calc(100% - 100px);
+  }
+}

@@ -5,6 +5,7 @@ import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Preloader from './Preloader/Preloader';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
+import NavTab from '../NavTab/NavTab';
 
 
 
@@ -17,6 +18,7 @@ function Movies() {
       <MoviesCardList />
       <Preloader />
       <Footer />
+      <NavTab />
     </div>
   )
 }

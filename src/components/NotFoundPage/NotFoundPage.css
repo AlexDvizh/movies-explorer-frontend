@@ -1,0 +1,32 @@
+.not-found-page {
+  margin-top: 246px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-page__title {
+  font-size: 140px;
+  line-height: 169px;
+  margin: 0;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.not-found-page__subtitle {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.not-found-page__link {
+  margin-top: 184px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4285F4;
+  text-decoration: none;
+}
+
+

@@ -81,3 +81,14 @@
   line-height: 18px;
   margin-left: 12px;
 }
+
+@media screen and (max-width: 768px) {
+  .search {
+    width: calc(100% - 60px);
+  }
+
+  .filter {
+    margin-top: 31px;
+    margin-bottom: 40px;
+  }
+}

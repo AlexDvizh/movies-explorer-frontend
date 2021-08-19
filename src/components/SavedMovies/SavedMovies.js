@@ -4,6 +4,7 @@ import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
+import NavTab from '../NavTab/NavTab';
 
 
 
@@ -15,6 +16,7 @@ function SavedMovies() {
       <SearchForm />
       <MoviesCardList />
       <Footer />
+      <NavTab />
     </div>
   )
 }

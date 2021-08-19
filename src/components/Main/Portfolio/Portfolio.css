@@ -59,3 +59,22 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+      width: calc(100% - 100px);
+  }
+
+  .portfolio__link-text {
+    font-size: 28px;
+  }  
+
+  .portfolio__link-icon {
+    width: 27px;
+  }
+
+  .portfolio__list-item:last-child {
+    padding-bottom: 90px;
+  }
+
+}

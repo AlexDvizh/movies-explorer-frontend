@@ -63,4 +63,22 @@
   color: #8B8B8B;
 }
 
+@media screen and (max-width: 768px) {
+  .content__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 22px;
+  }
 
+  .about-project {
+    width: calc(100% - 100px);
+  }
+
+  .content__wrap {
+    gap: 30px;
+  }
+
+  .table {
+    margin: 93px 0 90px 0;
+  }
+}

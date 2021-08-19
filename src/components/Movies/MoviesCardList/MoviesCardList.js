@@ -16,14 +16,6 @@ function MoviesCardList() {
         <MoviesCard />
         <MoviesCard />
         <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
       </div>
       <div className="more-movies">
         <button className="more-movies__button">Еще</button>

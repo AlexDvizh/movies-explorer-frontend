@@ -33,7 +33,7 @@
   margin-top: 100px;
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, 90px);
   gap: 10px;
   padding: 0;
   padding-bottom: 100px;
@@ -49,4 +49,34 @@
   width: 90px;
   justify-self: center;
   margin: 0;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__wrap {
+    width: calc(100% - 100px);
+  }
+
+  .techs__title {
+    margin-top: 80px;
+    margin-bottom: 22px;
+  }
+
+  .techs__list {
+    width: calc(100vw * 658/768);
+    grid-template-columns: repeat(auto-fit, 84px);
+    margin-top: 83px;
+    padding-bottom: 90px;
+  }
+
+  .techs__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .techs__point {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

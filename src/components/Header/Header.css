@@ -46,3 +46,9 @@
   padding: 8px 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .header__wrap {
+      width: calc(100% - 60px);
+  }
+
+}
