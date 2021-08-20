@@ -45,3 +45,10 @@
 .card__img {
   width: 100%;
 }
+
+@media screen and (max-width: 480px) {
+  .card__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

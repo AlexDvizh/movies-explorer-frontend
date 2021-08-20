@@ -21,6 +21,7 @@ function Navigation() {
           <div className="account-button__icon"></div>
           <Link className="account-button__text" to="/profile">Аккаунт</Link>
         </button>
+        <button className="navigation__hamburger-menu"></button>
       </div>
     </header>
   )

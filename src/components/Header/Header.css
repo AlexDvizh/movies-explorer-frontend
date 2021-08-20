@@ -50,5 +50,18 @@
   .header__wrap {
       width: calc(100% - 60px);
   }
+}
 
+@media screen and (max-width: 480px) {
+  .header__wrap {
+      width: calc(100% - 28px);
+  }
+
+  .header__link_reg {
+    font-size: 10px;
+  }
+
+  .header__link_login {
+    font-size: 10px;
+  }
 }

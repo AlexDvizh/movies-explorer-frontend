@@ -79,3 +79,21 @@
 .nav-menu__link:focus {
   border-bottom: 2px solid #FFF;
 }
+
+@media screen and (max-width: 480px) {
+  .nav-menu__container {
+      width: 100%;
+  }
+
+  .nav-menu__close-button {
+      margin: 13px 13px 99px 0;
+  }
+  
+  .nav-menu__links {
+      min-height: calc(100vh - (32px + 46px + 99px + 13px + 22px));
+  }
+
+  .nav-menu__links-item {
+      margin: 0 0 24px 0;
+  }
+}

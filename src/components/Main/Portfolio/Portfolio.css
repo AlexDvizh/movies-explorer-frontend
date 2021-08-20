@@ -78,3 +78,37 @@
   }
 
 }
+
+@media screen and (max-width: 480px) {
+  .portfolio {
+      width: calc(100% - 28px);
+  }
+
+  .portfolio__title {
+    margin-top: 70px;
+  }
+
+  .portfolio__list-item {
+    padding: 0;
+    border-bottom: 1px solid #E6E6E6;
+  }
+
+  .portfolio__list-item:first-child {
+    padding: 40px 0 0 0;
+  }
+
+  .portfolio__list-item:last-child {
+    padding-bottom: 70px;
+  }
+
+  .portfolio__link-text {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: normal;
+    letter-spacing: -0.04em;
+  }
+
+  .portfolio__link-icon {
+    background-size: 12px 12px;
+  }
+}

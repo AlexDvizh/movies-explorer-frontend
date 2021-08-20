@@ -27,3 +27,16 @@
   line-height: 12px;
   color: #EE3465;
 }
+
+@media screen and (max-width: 768px) {
+  .register__form {
+    width: calc(100% - 372px);
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .register__form {
+    width: 94%;
+  }
+}

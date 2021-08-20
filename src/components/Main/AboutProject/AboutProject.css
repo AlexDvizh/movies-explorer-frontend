@@ -82,3 +82,50 @@
     margin: 93px 0 90px 0;
   }
 }
+
+@media screen and (max-width: 540px) {
+  .about-project {
+    width: calc(100% - 36px);
+  }
+
+  .content__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 22px;
+  }
+
+  .content__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .content__title {
+    padding-top: 50px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .content__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 16px;
+  }
+
+  .table__title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .table {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    margin: 50px 0 70px 0;
+  }
+
+  .table__subtitle {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+}

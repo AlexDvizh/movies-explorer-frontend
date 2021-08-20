@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../Promo/Promo.css';
 import globus from '../../../images/web-earth.png'
 
@@ -14,9 +15,9 @@ function Promo() {
         </div>
         <img className="promo__img" src={globus} alt="Картинка глобуса"></img>
       </section>
-      <a className="promo__button-link" href="/">
+      <Link className="promo__button-link" to="/movies">
         <button className="promo__button">Узнать больше</button>
-      </a>
+      </Link>
     </div>
   )
 }

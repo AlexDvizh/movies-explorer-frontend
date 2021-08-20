@@ -80,3 +80,35 @@
     line-height: 15px;
   }
 }
+
+@media screen and (max-width: 540px) {
+  .techs {
+    background-color: #202020;
+  }
+
+  .techs__wrap {
+    width: calc(100% - 28px);
+  }
+
+  .techs__title {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .techs__list {
+    width: calc(100vw * 178/320);
+    grid-template-columns: repeat(auto-fit, 84px);
+    margin-top: 50px;
+    padding-bottom: 70px;
+  }
+
+  .techs__point {
+    width: 100%;
+  }
+}

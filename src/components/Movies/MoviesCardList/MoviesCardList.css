@@ -40,3 +40,16 @@
     gap: 30px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .movies-cards {
+    width: calc(100% - 20px);
+  }
+
+  .movies-list {
+    grid-template-columns: repeat(auto-fit, 300px);
+    row-gap: 14px;
+    margin-top: 50px;
+  }
+
+}

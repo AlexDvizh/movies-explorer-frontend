@@ -100,3 +100,25 @@
     margin-bottom: 269px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .profile {
+    margin-bottom: 40px;
+  }
+
+  .profile__wrap {
+    width: calc(100% - 60px);
+  }
+
+  .profile__form-group {
+    width: 100%;
+  }
+
+  .profile_title {
+    margin: 70px 0 80px 0;
+  }
+
+  .profile__button {
+    margin-top: 379px;
+  }
+}

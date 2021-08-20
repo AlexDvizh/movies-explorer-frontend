@@ -41,6 +41,7 @@
   max-width: 270px;
   max-height: 327px;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .contacts {
@@ -92,5 +93,45 @@
     max-width: 255px;
     max-height: 307px;
     margin-left: 49px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .about-me {
+      width: calc(100% - 28px);
+  }
+
+  .content-block {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 60px;
+  }
+
+  .content-block__img {
+    width: 292px;
+    height: 352px;
+    max-width: none;
+    max-height: none;
+    margin: auto;
+  }
+
+  .content-block__info {
+    margin-top: 40px;
+  }
+
+  .content-block__name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .content-block__about,
+  .content-block__proffesion
+   {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .contacts {
+    margin-top: 40px;
   }
 }

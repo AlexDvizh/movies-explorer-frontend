@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../AboutMe/AboutMe.css';
 import photo from '../../../images/avatar.jpg';
 
@@ -16,10 +17,10 @@ function AboutMe() {
   и кот. Люблю путешествовать, увлекаюсь спортом. 9 лет жизни посвятил спортивной гимнастике. С 2017 года работаю в компании «МЕГОГО». С августа 2020 начал кодить. После того, как прошёл курс по веб-разработке, начал активные поиски постоянной работы в сфере IT.</p>
           <ul className="contacts">
             <li className="contacts__item">
-              <a className="contacts__link" href="https://t.me/alex_dvizh" target="_blank" rel="noreferrer">Telegram</a>
+              <Link className="contacts__link" to="https://t.me/alex_dvizh" target="_blank" rel="noreferrer">Telegram</Link>
             </li>
             <li className="contacts__item">
-              <a className="contacts__link" href="https://github.com/AlexDvizh" target="_blank" rel="noreferrer">Github</a>
+              <Link className="contacts__link" to="https://github.com/AlexDvizh" target="_blank" rel="noreferrer">Github</Link>
             </li>
           </ul>
         </div>

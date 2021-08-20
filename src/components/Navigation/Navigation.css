@@ -38,8 +38,37 @@
   margin-left: 16px;
 }
 
+.navigation__hamburger-menu {
+  display: none;
+  padding: 0;
+  height: 44px;
+  width: 44px;
+  border: none;
+  background-color: transparent;
+  background-image: url(../../images/icon__hamburger.svg);
+}
+
+.navigation__hamburger-menu:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .navigation {
     width: calc(100% - 60px);
+  }
+
+  .navigation__hamburger-menu {
+    display: block;
+  }
+
+  .navigation__link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navigation {
+    width: calc(100% - 28px);
   }
 }

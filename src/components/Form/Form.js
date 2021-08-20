@@ -23,6 +23,11 @@ function Form(props) {
         <input className="register__input"></input>
         <span className="register__input-err">Что-то пошло не так...</span>
       </div>
+      {props.inputName &&
+        (
+        <button type="submit" className="reg-login-page__button">Зарегистрироваться</button>
+        )
+      } 
     </form>
   )
 }

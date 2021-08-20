@@ -27,6 +27,43 @@
   line-height: 17px;
   color: #4285F4;
   text-decoration: none;
+  margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .not-found-page {
+    margin: 0;
+  }
 
+  .not-found-page__title  {
+    margin-top: 408px;
+  }
+
+  .not-found-page__link {
+    margin-bottom: 222px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  .not-found-page__title  {
+    margin-top: 329px;
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .not-found-page__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .not-found-page__link {
+    margin-bottom: 30px;
+  }
+
+  .not-found-page__link {
+    margin-top: 284px;
+  }  
+}

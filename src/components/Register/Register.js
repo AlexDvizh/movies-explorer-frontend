@@ -16,12 +16,9 @@ function Register() {
       <Form 
         inputName={true}
       />
-      <div>
-        <button className="reg-login-page__button">Зарегистрироваться</button>
-        <p className="reg-login-page__login-page">Уже зарегистрированы?
-          <Link className="reg-login-page__login-link" to="/signin">Войти</Link>
-        </p>
-      </div>
+      <p className="reg-login-page__login-page">Уже зарегистрированы?
+        <Link className="reg-login-page__login-link" to="/signin">Войти</Link>
+      </p>
     </section>
   )
 }
