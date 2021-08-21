@@ -1,6 +1,5 @@
 .movies-cards {
-  width: calc(100% - 140px);
-  margin: auto;
+  width: 100%;
 }
 
 .movies-list {
@@ -9,6 +8,7 @@
   gap: 38px 20px;
   margin-top: 75px;
   grid-auto-flow: row;
+  justify-content: center;
 }
 
 .more-movies__button {
@@ -30,11 +30,8 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 900px) {
-  .movies-cards {
-    width: calc(100% - 60px);
-  }
 
+@media screen and (max-width: 900px) {
   .movies-list {
     grid-template-columns: repeat(auto-fit, 339px);
     gap: 30px;
@@ -42,14 +39,9 @@
 }
 
 @media screen and (max-width: 480px) {
-  .movies-cards {
-    width: calc(100% - 20px);
-  }
-
   .movies-list {
     grid-template-columns: repeat(auto-fit, 300px);
     row-gap: 14px;
     margin-top: 50px;
   }
-
 }

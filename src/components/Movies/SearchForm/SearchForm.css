@@ -32,6 +32,11 @@
   font-weight: 500;
 }
 
+.search__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 .filter {
   display: flex;
   justify-content: center;

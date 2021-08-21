@@ -1,13 +1,11 @@
-import React from 'react';
 import { useLocation } from 'react-router-dom';
 import '../MoviesCard/MoviesCard.css';
 import movieImg from '../../../images/movie.jpg';
 
-
 function MoviesCard() {
   const location = useLocation().pathname;
   const savedMovies = (location === '/saved-movies') ? true : false;
-  
+
   return (
     <section className="card">
       <img className="card__img" src={movieImg} alt="Обложка фильма"></img>
@@ -17,7 +15,7 @@ function MoviesCard() {
         (
           <button className="card__like card__like_delete"></button>
         ) : (
-          <button className="card__like"></button>
+          <button className="card__like card__like_type_active"></button>
         )
         }   
       </div>
