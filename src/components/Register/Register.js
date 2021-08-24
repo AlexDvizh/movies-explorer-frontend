@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 import Form from '../Form/Form';
 
 
-function Register() {
+function Register(props) {
   
   return (
     <section className="reg-login-page">
@@ -15,6 +15,7 @@ function Register() {
       </div>
       <Form 
         inputName={true}
+        handleRegister={props.handleRegister}
       />
       <p className="reg-login-page__login-page">Уже зарегистрированы?
         <Link className="reg-login-page__login-link" to="/signin">Войти</Link>

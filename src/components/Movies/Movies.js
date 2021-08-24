@@ -9,13 +9,14 @@ import NavTab from '../NavTab/NavTab';
 
 
 
-function Movies() {
+function Movies(props) {
   
   return (
     <div className="movies">
       <Navigation />
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList
+         />
       <Preloader />
       <Footer />
       <NavTab />

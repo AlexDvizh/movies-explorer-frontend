@@ -5,7 +5,7 @@ import '../Form/Form.css';
 function Form(props) {
   
   return (
-    <form className="register__form">
+    <form onSubmit={props.handleRegister} className="register__form">
       {props.inputName &&
         (<div>
           <p className="register__input-name">Имя</p>
