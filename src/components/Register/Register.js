@@ -3,9 +3,17 @@ import { Link } from 'react-router-dom';
 import '../Register/Register.css';
 import logo from '../../images/logo.svg';
 import Form from '../Form/Form';
+import { useFormWithValidation } from '../../utils/FormValidation';
 
 
 function Register(props) {
+  const formValidation = useFormWithValidation();
+  const {name, email, password} = formValidation.values;
+
+  function handleRegister(evt) {
+    evt.preventDefault();
+    props.onRegister({name, email, password});
+  }
   
   return (
     <section className="reg-login-page">
@@ -15,7 +23,8 @@ function Register(props) {
       </div>
       <Form 
         inputName={true}
-        handleRegister={props.handleRegister}
+        onSubmit={handleRegister}
+        validation={formValidation}
       />
       <p className="reg-login-page__login-page">Уже зарегистрированы?
         <Link className="reg-login-page__login-link" to="/signin">Войти</Link>

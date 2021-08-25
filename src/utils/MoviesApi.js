@@ -1,4 +1,4 @@
-const URL = 'https://api.nomoreparties.co/beatfilm-movies';
+const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
 const checkResponce = (res) => {
   if (res.ok) {
@@ -8,7 +8,7 @@ const checkResponce = (res) => {
 }
 
 export const getMovies = () => {
-  return fetch(URL, {
+  return fetch(MOVIES_URL, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

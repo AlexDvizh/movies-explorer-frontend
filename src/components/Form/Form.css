@@ -22,10 +22,20 @@
   padding-left: 15px;
 }
 
+.reg-login-page__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 .register__input-err {
+  display: none;
   font-size: 10px;
   line-height: 12px;
   color: #EE3465;
+}
+
+.register__input-err_active {
+  display: flex;
 }
 
 @media screen and (max-width: 768px) {

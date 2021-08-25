@@ -44,7 +44,7 @@ export const authorize = ({email, password}) => {
 };
 
 export const getUserInfo = () => {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${MAIN_URL}/users/me`, {
       method: 'GET',
       headers: {
       'Content-Type': 'application/json',

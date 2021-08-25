@@ -24,12 +24,12 @@ function App() {
 
   const history = useHistory();
 
-  const handleRegister = (inputs) => {
-    register(inputs)
+  function handleRegister(name, email, password) {
+    register(name, email, password)
       .then((data) => {
         setErrorMessage('');
         //автоматическая авторизация
-        const {email, password} = inputs;
+        //const {email, password} = inputs;
         handleLogin({email, password})
       })
       .catch((err) => {
@@ -37,13 +37,13 @@ function App() {
       });
   }
 
-  const handleLogin = (inputs) => {
+  function handleLogin(inputs) {
     authorize(inputs)
         .then((data) => { 
           if (data.token) {
             setErrorMessage('');
             localStorage.setItem('jwt', data.token);
-            //tokenCheck();
+            tokenCheck();
             history.push('/movies');
           }
         })
@@ -53,7 +53,7 @@ function App() {
         });
   }
 
-  const tokenCheck = () => {
+  function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) { 
       getUserInfo()
@@ -88,7 +88,7 @@ function App() {
           </Route>
           <Route path="/signup">
             <Register 
-            handleRegister={handleRegister}/>
+              onRegister={handleRegister}/>
           </Route>
           <Route path="/signin">
             <Login />
