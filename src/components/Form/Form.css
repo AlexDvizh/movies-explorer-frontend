@@ -1,0 +1,42 @@
+.register__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 335px;
+}
+
+.register__input-name {
+  font-size: 10px;
+  line-height: 12px;
+  color: #8B8B8B;
+}
+
+.register__input {
+  width: 100%;
+  background: #2F2F2F;
+  border-radius: 8px;
+  height: 46px;
+  border: none;
+  outline: none;
+  color: #FFF;
+  padding-left: 15px;
+}
+
+.register__input-err {
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+}
+
+@media screen and (max-width: 768px) {
+  .register__form {
+    width: calc(100% - 372px);
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .register__form {
+    width: 94%;
+  }
+}

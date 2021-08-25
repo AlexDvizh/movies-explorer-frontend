@@ -1,0 +1,179 @@
+.page {
+  background-color: #202020;
+  color: #FFF;
+  font-family: 'Inter', Arial, sans-serif;
+  width: 100%;
+  max-width: none;
+}
+
+/* блоки - AboutProject, Techs, AboutMe */
+
+.section__heading {
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: normal;
+  padding-top: 110px;
+  border-bottom: 1px solid rgb(250, 250, 250, 0.6);
+  padding-bottom: 23px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .section__heading {
+      padding-top: 90px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .section__heading {
+      padding: 70px 0 28px 0;
+  }
+}
+
+/* блоки - register and login */
+
+.reg-login-page {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 396px;
+}
+
+.reg-login-page__logo {
+  width: 38px;
+  height: 38px;
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+
+.reg-login-page__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.reg-login-page__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-login-page__login-page {
+  text-align: center;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8B8B8B;
+}
+
+.reg-login-page__login-link {
+  margin-left: 6px;
+  text-decoration: none;
+  color: #4285F4;
+}
+
+.reg-login-page__button {
+  width: 100%;
+  background-color: #4285F4;
+  border: none;
+  border-radius: 3px;
+  color: #FFF;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  height: 45px;
+  margin-top: 69px;
+}
+
+@media screen and (max-width: 768px) {
+  .reg-login-page {
+    width: calc(100% - 60px);
+  }
+
+  .reg-login-page__logo {
+      margin-top: 232px;
+  }
+
+  .reg-login-page__login-page {
+    margin-bottom: 232px;
+  }
+
+  .reg-login-page__header {
+    width: calc(100% - 372px);
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .reg-login-page__logo {
+    margin: 56px 0 50px 0;
+    align-self: center;
+  }
+
+  .reg-login-page__login-page {
+    margin-bottom: 30px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .reg-login-page__login-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .reg-login-page__title {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  .reg-login-page__button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .reg-login-page__header {
+    width: calc(100% - 60px);
+    margin: auto;
+  }
+}
+
+/* блоки - Navigation, NavTab */
+
+.account-button {
+  border: 1px solid rgb(170, 170, 170, 0.6);
+  background-color: #2F2F2F;
+  color: #FFF;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+}
+
+.account-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.account-button__text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  align-self: center;
+  text-decoration: none;
+  color: #FFF;
+}
+
+.account-button__icon {
+  background-image: url(../../images/icon-account.svg);
+  width: 10px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-self: center;
+  margin-right: 7px;
+}
+
+@media screen and (max-width: 768px) {
+  .account-button {
+    display: none;
+  }
+
+}

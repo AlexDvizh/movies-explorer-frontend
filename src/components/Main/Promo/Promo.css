@@ -1,0 +1,129 @@
+.promo {
+  background-color: #073042;
+  
+}
+
+.promo__content {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 75px;
+  width: calc(100% - 140px);
+  margin: auto;
+}
+
+.promo__text-title {
+  font-size: 50px;
+  line-height: 58px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.promo__text-subtitle {
+  font-size: 13px;
+  line-height: 16px;
+  opacity: 0.5;
+  margin-top: 36px;
+  max-width: 310px;
+  font-weight: normal;
+}
+
+.promo__img {
+  width: 310px;
+  height: 304px;
+}
+
+.promo__button {
+  border: 1px solid rgb(250, 250, 250, 0.6);
+  border-radius: 3px;
+  background-color: #073042;
+  color: #FFFFFF;
+  font-size: 12px;
+  padding: 10px 20px;
+  margin: 84px 0 75px 70px;
+}
+
+.promo__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .promo__content {
+      width: calc(100% - 100px);
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+  }
+
+  .promo__text-title {
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+    width: calc(100% - 28px);
+  }
+
+  .promo__img {
+    margin: 140px 0 48px 0;
+  }
+
+  .promo__text-subtitle {
+    text-align: center;
+    align-self: center;
+    max-width: 260px;
+    margin-top: 22px;
+  }
+
+  .promo__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .promo__button {
+    margin: 0;
+    margin-bottom: 76px;
+  }
+
+  .promo__button-link {
+    margin-top: 92px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .promo__content {
+      width: calc(100% - 20px);
+  }
+
+  .promo__img {
+    width: 206px;
+    height: 210px;
+    margin: 70px 0 44px 0;
+  }
+  
+  .promo__text-title {
+    width: calc((300/320)*100vw);
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -0.04em;
+  }
+
+  .promo__text-subtitle {
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 24px;
+  }
+
+  .promo__button-link {
+    margin-top: 80px;
+  }
+
+  .promo__button {
+    margin-bottom: 30px;
+  }
+}
