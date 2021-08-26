@@ -18,7 +18,9 @@ function Register(props) {
   return (
     <section className="reg-login-page">
       <div className="reg-login-page__header">
-        <img className="reg-login-page__logo" src={logo} alt="Логотип"></img>
+        <Link to="/">
+          <img className="reg-login-page__logo" src={logo} alt="Логотип"></img>
+        </Link>
         <h1 className="reg-login-page__title">Добро пожаловать!</h1>
       </div>
       <Form 

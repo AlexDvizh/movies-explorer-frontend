@@ -3,24 +3,7 @@ import '../Form/Form.css';
 
 
 function Form(props) {
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
 
-  // function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   props.onSubmit(name, email, password);
-  // }
-
-  // function handlerChangeName(evt) {
-  //   setName(evt.target.value)
-  // }
-  // function handlerChangeEmail(evt) {
-  //   setEmail(evt.target.value)
-  // }
-  // function handlerChangePass(evt) {
-  //   setPassword(evt.target.value)
-  // }
   
   return (
     <form className="register__form" onSubmit={props.onSubmit} noValidate>

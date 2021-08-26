@@ -3,18 +3,30 @@ import { Link } from 'react-router-dom';
 import '../Login/Login.css';
 import logo from '../../images/logo.svg';
 import Form from '../Form/Form';
+import { useFormWithValidation } from '../../utils/FormValidation';
 
 
-function Login() {
+function Login(props) {
+  const formValidation = useFormWithValidation();
+  const {email, password} = formValidation.values;
+
+  function handleLogin(evt) {
+    evt.preventDefault();
+    props.onRegister({email, password});
+  }
   
   return (
     <section className="reg-login-page">
       <div className="reg-login-page__header">
-        <img className="reg-login-page__logo" src={logo} alt="Логотип"></img>
+        <Link to="/">
+          <img className="reg-login-page__logo" src={logo} alt="Логотип"></img>
+        </Link>
         <h1 className="reg-login-page__title">Рады видеть!</h1>
       </div>
       <Form 
         inputName={false}
+        validation={formValidation}
+        onSubmit={handleLogin}
       />
       <div>
         <button className="reg-login-page__button">Войти</button>

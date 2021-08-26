@@ -12,6 +12,10 @@
   margin-top: 80px;
 }
 
+.search__line_type_error {
+  margin: 0 0 10px;
+}
+
 .search__input {
   background-color: #2F2F2F;
   color: #8B8B8B;
@@ -20,6 +24,20 @@
   padding-left: 22px;
   font-size: 14px;
   line-height: 18px;
+}
+
+.search__input-error {
+  margin: 0 0 0 40px;
+  display: none;
+  width: 100%;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: #FF4062;
+}
+
+.search__input-error_active {
+  display: flex;
 }
 
 .search__button {

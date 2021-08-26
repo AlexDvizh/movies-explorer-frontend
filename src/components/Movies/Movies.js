@@ -14,10 +14,21 @@ function Movies(props) {
   return (
     <div className="movies">
       <Navigation />
-      <SearchForm />
+      <SearchForm 
+        onShowMovies={props.onShowMovies}
+        onFilterCheckboxClick={props.onFilterCheckboxClick}
+        isCheckboxActive={props.isCheckboxActive}
+      />
       <MoviesCardList
-         />
-      <Preloader />
+        isServerError={props.isServerError}
+        searchedCards={props.searchedCards}
+        isOpen={props.isMoviesCardListOpen}
+        shownCards={props.shownCards}
+        onMoreClick={props.onMoreClick}
+      />
+      <Preloader 
+        isOpen={props.isPreloaderOpen} 
+      />
       <Footer />
       <NavTab />
     </div>

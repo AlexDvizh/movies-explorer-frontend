@@ -9,13 +9,6 @@ function MoviesCardList() {
     <section className="movies-cards">
       <div className="movies-list">
         <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
       </div>
       <div className="more-movies">
         <button className="more-movies__button">Еще</button>
