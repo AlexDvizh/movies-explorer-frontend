@@ -29,8 +29,7 @@ function SearchForm(props) {
   const savedMovies = (location === "/saved-movies") ? true : false;
 
   const handleFilterCheckboxClick = () => {
-      props.onFilterCheckboxClick();
-      
+      props.onCheckboxClick();
   }
   
   return (

@@ -1,4 +1,4 @@
-const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+export const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
 const checkResponce = (res) => {
   if (res.ok) {

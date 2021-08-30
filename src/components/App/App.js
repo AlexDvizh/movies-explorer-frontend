@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useLocation} from 'react-router-dom'
+
+import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { getMovies } from '../../utils/MoviesApi';
+import { authorize, deleteSavedMovie, getSavedMovies, getUserInfo, register, saveMovie, setUserInfo } from '../../utils/MainApi';
+import { filterCards, filterCardsByText, filterCardsByCheckbox, showCardsParameters } from '../../utils/utils';
+
 import './App.css';
+
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -9,16 +16,14 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import NavTab from '../NavTab/NavTab';
-import { getMovies } from '../../utils/MoviesApi';
-import { authorize, getUserInfo, register } from '../../utils/MainApi';
-import { filterCards, filterCardsByText, filterCardsByCheckbox } from '../../utils/utils';
-
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 
 
 function App() {
   //авторизация
   const [loggedIn, setLoggedIn] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
   //const [errorMessage, setErrorMessage] = useState('');
 
   const [currentUser, setCurrentUser] = useState('');
@@ -47,14 +52,54 @@ function App() {
   const history = useHistory();
   const location = useLocation().pathname;
 
+  // window.addEventListener('resize', () => {
+  //   setTimeout(setShownCardsParameters, 1000);
+  // });
+
+  function setShownCardsParameters() {
+    const pageWidth = window.innerWidth;
+    const shownCardsParameters = showCardsParameters(pageWidth);
+    setNumberOfInitialCards(shownCardsParameters.numOfInitialCards);
+    setMaxNumberOfAddedCards(shownCardsParameters.maxNumOfAddedCards);
+  }
+
+  useEffect(() => {
+    setShownCardsParameters();
+  }, []);
 
   useEffect(() => {
     tokenCheck();
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     if (localStorage.getItem('movies')) {
       setAllCards(JSON.parse(localStorage.getItem('movies')));
+    }
+  }, []);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      getSavedMovies()
+        .then((movies) => {
+            setSavedCards(movies);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    // при рендере отображать ранее найденные и отфильтрованные фильмы
+      if (localStorage.getItem('filteredMovies')) {
+        const shownCardsParameters = showCardsParameters(window.innerWidth);
+        const filteredCards = JSON.parse(localStorage.getItem('filteredMovies'));
+        setSearchedCards(filteredCards);
+        setShownCards(filteredCards.slice(0, shownCardsParameters.numOfInitialCards));
+        setIsMoviesCardListOpen(true);
+        // проверить, короткометражки ли это
+        if ( filteredCards.length === filterCardsByCheckbox(filteredCards).length) {
+          setIsCheckboxActive(true);
+          setOldSearchedCards(JSON.parse(localStorage.getItem('oldFilteredMovies')));
+        }
+      }
     }
   }, []);
 
@@ -84,7 +129,7 @@ function App() {
         });
   }
 
-  function tokenCheck() {
+  const tokenCheck = () => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) { 
       getUserInfo()
@@ -98,6 +143,58 @@ function App() {
     } else {
       setLoggedIn(false);
     }
+  }
+
+  //добавил новое
+  const handleSignOut = () => {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('movies');
+    localStorage.removeItem('filteredMovies');
+    localStorage.removeItem('oldFilteredMovies');
+    setShownCards([]);
+    setIsMoviesCardListOpen(false);
+    setLoggedIn(false);
+    history.push('/');
+  }
+
+  const handleEditUserInfo = (inputs) => {
+    setUserInfo(inputs)
+      .then((data) => {
+        setCurrentUser(data);
+        setFeedbackMessage('Данные обновлены успешно');
+      })
+      .catch((err) => {
+        setFeedbackMessage(err);
+        console.log(err);
+      })
+  }
+
+  const handleCardSave = (movie) => {
+    const cardsSavedCurrentUser = savedCards.filter(item => item.owner._id === currentUser._id);
+    const isCardSaved = cardsSavedCurrentUser.map(item => item.movieId).includes(movie.id);
+    if (!isCardSaved) {
+      saveMovie(movie)
+        .then((movieCard) => {
+          setSavedCards([...savedCards, movieCard]);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    } else {
+      const thisMovieInSavedCards = cardsSavedCurrentUser.find(item => item.movieId === movie.id);
+      handleCardNotSave(thisMovieInSavedCards);
+    }
+  }
+
+  const handleCardNotSave = (movie) => {
+    deleteSavedMovie(movie._id)
+      .then(() => {
+        const updateSavedCards = savedCards.filter(item => item !== movie );
+        setSavedCards(updateSavedCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   const handleShowMovies = (searchText) => {
@@ -121,7 +218,7 @@ function App() {
             setShownCards(filteredCards.slice(0, numberOfInitialCards));
             setIsMoviesCardListOpen(true);
             // чтобы при рендере отображать ранее найденные и отфильтрованные фильмы
-             localStorage.setItem('filteredMovies', JSON.stringify(filteredCards));
+            localStorage.setItem('filteredMovies', JSON.stringify(filteredCards));
           })
           .catch((err) => {
             setIsPreloaderOpen(false);
@@ -176,34 +273,64 @@ function App() {
     } 
   };
 
+  const handleCheckboxSavedMoviesClick = () => {
+    setIsCheckboxSavedMoviesActive(!isCheckboxSavedMoviesActive);
+    if (!isCheckboxSavedMoviesActive) {
+      // подготовить то, что будем показывать при отмене фильтра по короткометражкам
+      setOldSearchedSavedCards(searchedSavedCards);
+      // отфильтровать запрос и отдать в MoviesCardList
+      const shortFilms= filterCardsByCheckbox(searchedSavedCards);
+      setSearchedSavedCards(shortFilms);
+    } else {
+        setSearchedSavedCards(oldSearchedSavedCards);
+    } 
+  };
+
   
   return (
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Switch>
           <Route exact path="/">
             <Main />
           </Route>
-          <Route path="/movies">
-            <Movies 
-              onShowMovies={handleShowMovies}
-              onCheckboxClick={handleCheckboxClick}
-              setSavedCards={setSavedCards}
-              onMoreClick={handleMoreClick}
-              isPreloaderOpen={isPreloaderOpen}
-              isMoviesCardListOpen={isMoviesCardListOpen}
-              isServerError={isServerError}
-              searchedCards={searchedCards}
-              savedCards={savedCards}
-              shownCards={shownCards}
-              isCheckboxActive={isCheckboxActive}
-            />
-          </Route>
-          <Route path="/saved-movies">
-            <SavedMovies />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
+          <ProtectedRoute
+            path="/movies"
+            component={Movies}
+            loggedIn={loggedIn}
+            onShowMovies={handleShowMovies}
+            onCheckboxClick={handleCheckboxClick}
+            setSavedCards={setSavedCards}
+            onMoreClick={handleMoreClick}
+            isPreloaderOpen={isPreloaderOpen}
+            isMoviesCardListOpen={isMoviesCardListOpen}
+            isServerError={isServerError}
+            searchedCards={searchedCards}
+            savedCards={savedCards}
+            shownCards={shownCards}
+            isCheckboxActive={isCheckboxActive}
+            onCardSave={handleCardSave}
+          />
+          <ProtectedRoute 
+            path="/saved-movies"
+            component={SavedMovies}
+            loggedIn={loggedIn}
+            onShowMovies={handleShowMovies}
+            savedCards={savedCards}
+            searchedSavedCards={searchedSavedCards}
+            setSavedCards={setSavedCards}
+            onCheckboxClick={handleCheckboxSavedMoviesClick}
+            isSearchButtonPressed={isSearchButtonPressed}
+            onCardNotSave={handleCardNotSave}
+          />
+          <ProtectedRoute
+            path="/profile"
+            component={Profile}
+            loggedIn={loggedIn}
+            onSignOut={handleSignOut}
+            onEditUserInfo={handleEditUserInfo}
+            feedbackMessage={feedbackMessage}
+          />
           <Route path="/signup">
             <Register 
               onRegister={handleRegister}
@@ -220,6 +347,7 @@ function App() {
         </Switch>
         <NavTab />
       </div>
+    </CurrentUserContext.Provider>
   )
 }
 
