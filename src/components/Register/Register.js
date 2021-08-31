@@ -25,8 +25,11 @@ function Register(props) {
       </div>
       <Form 
         inputName={true}
+        inputEmail={true}
+        inputPass={true}
         onSubmit={handleRegister}
         validation={formValidation}
+        buttonText={'Зарегистрироваться'}
       />
       <p className="reg-login-page__login-page">Уже зарегистрированы?
         <Link className="reg-login-page__login-link" to="/signin">Войти</Link>

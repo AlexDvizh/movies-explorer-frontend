@@ -15,7 +15,7 @@ function Header() {
         </Link>
         <div className="header__auth">
           <Link className="header__link header__link_reg" to="/signup">Регистрация</Link>
-          <Link className="header__link header__link_login" to="/">Войти</Link>
+          <Link className="header__link header__link_login" to="/signin">Войти</Link>
         </div>
       </div>
     </header>

@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import '../MoviesCard/MoviesCard.css';
-import { MOVIES_URL } from '../../../utils/MoviesApi';
+import * as MoviesApi from '../../../utils/MoviesApi';
 
 
 function MoviesCard(props) {
@@ -10,7 +10,7 @@ function MoviesCard(props) {
 
   const handleCardSave = () => {
     props.onCardSave(props.card);
-};
+  };
 
   const handleCardNotSave = () => {
       props.onCardNotSave(props.card);
@@ -35,7 +35,7 @@ function MoviesCard(props) {
           </a>
         ) : (
           <a href={props.card.trailer} target="_blank" rel="noreferrer">
-            <div className="card__img" style={{ ackgroundImage: `url(${ MOVIES_URL + props.card.image.url})` }} ></div>
+            <div className="card__img" style={{ ackgroundImage: `url(${ MoviesApi.MOVIES_URL + props.card.image.url})` }} ></div>
           </a>
         )
       }

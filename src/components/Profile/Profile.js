@@ -12,14 +12,14 @@ function Profile(props) {
   const {name, email} = validation.values;
 
   function handleSubmit (event) {
-      event.preventDefault();
-      props.onEditUserInfo({name, email});
+    event.preventDefault();
+    props.onEditUserInfo({name, email});
   }
 
   useEffect(() => {
-      if (currentUser) {
-          validation.setValues({name: currentUser.name, email: currentUser.email });
-      }
+    if (currentUser) {
+        validation.setValues({ name: currentUser.name, email: currentUser.email });
+    }
   }, [currentUser]);
   
   return (

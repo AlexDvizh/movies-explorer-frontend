@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useLocation} from 'react-router-dom'
 
 import { CurrentUserContext } from '../../context/CurrentUserContext';
-import { getMovies } from '../../utils/MoviesApi';
-import { authorize, deleteSavedMovie, getSavedMovies, getUserInfo, register, saveMovie, setUserInfo } from '../../utils/MainApi';
+import * as MoviesApi from '../../utils/MoviesApi';
+import * as MainApi from '../../utils/MainApi';
+// import { getMovies } from '../../utils/MoviesApi';
+// import { authorize, deleteSavedMovie, getSavedMovies, getUserInfo, register, saveMovie, setUserInfo } from '../../utils/MainApi';
 import { filterCards, filterCardsByText, filterCardsByCheckbox, showCardsParameters } from '../../utils/utils';
 
 import './App.css';
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -16,18 +19,16 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import NavTab from '../NavTab/NavTab';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 
 
 function App() {
+  const history = useHistory();
+  const location = useLocation().pathname;
+  const [currentUser, setCurrentUser] = useState({});
   //авторизация
   const [loggedIn, setLoggedIn] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
-  //const [errorMessage, setErrorMessage] = useState('');
-
-  const [currentUser, setCurrentUser] = useState('');
-
   //карточки фильмов
   const [isPreloaderOpen, setIsPreloaderOpen] = useState(false);
   const [isMoviesCardListOpen, setIsMoviesCardListOpen] = useState(false);
@@ -49,12 +50,7 @@ function App() {
   const [maxNumberOfAddedCards, setMaxNumberOfAddedCards] = useState(0);
   const [shownCards, setShownCards] = useState([]);
 
-  const history = useHistory();
-  const location = useLocation().pathname;
 
-  // window.addEventListener('resize', () => {
-  //   setTimeout(setShownCardsParameters, 1000);
-  // });
 
   function setShownCardsParameters() {
     const pageWidth = window.innerWidth;
@@ -67,20 +63,24 @@ function App() {
     setShownCardsParameters();
   }, []);
 
+  window.addEventListener('resize', () => {
+    setTimeout(setShownCardsParameters, 1000);
+  });
+
   useEffect(() => {
     tokenCheck();
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem('movies')) {
-      setAllCards(JSON.parse(localStorage.getItem('movies')));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem('movies')) {
+  //     setAllCards(JSON.parse(localStorage.getItem('movies')));
+  //   }
+  // }, []);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      getSavedMovies()
+      MainApi.getSavedMovies()
         .then((movies) => {
             setSavedCards(movies);
         })
@@ -104,9 +104,8 @@ function App() {
   }, []);
 
   function handleRegister(inputs) {
-    register(inputs)
+    MainApi.register(inputs)
       .then(() => {
-        //автоматическая авторизация
         const {email, password} = inputs;
         handleLogin({email, password})
       })
@@ -116,7 +115,7 @@ function App() {
   }
 
   function handleLogin(inputs) {
-    authorize(inputs)
+    MainApi.authorize(inputs)
         .then((data) => { 
           if (data.token) {
             localStorage.setItem('jwt', data.token);
@@ -132,7 +131,7 @@ function App() {
   const tokenCheck = () => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) { 
-      getUserInfo()
+      MainApi.getUserInfo()
         .then((user) => {
           setCurrentUser(user);
           setLoggedIn(true);
@@ -145,7 +144,6 @@ function App() {
     }
   }
 
-  //добавил новое
   const handleSignOut = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
@@ -158,7 +156,7 @@ function App() {
   }
 
   const handleEditUserInfo = (inputs) => {
-    setUserInfo(inputs)
+    MainApi.setUserInfo(inputs)
       .then((data) => {
         setCurrentUser(data);
         setFeedbackMessage('Данные обновлены успешно');
@@ -172,8 +170,9 @@ function App() {
   const handleCardSave = (movie) => {
     const cardsSavedCurrentUser = savedCards.filter(item => item.owner._id === currentUser._id);
     const isCardSaved = cardsSavedCurrentUser.map(item => item.movieId).includes(movie.id);
+
     if (!isCardSaved) {
-      saveMovie(movie)
+      MainApi.saveMovie(movie)
         .then((movieCard) => {
           setSavedCards([...savedCards, movieCard]);
         })
@@ -187,7 +186,7 @@ function App() {
   }
 
   const handleCardNotSave = (movie) => {
-    deleteSavedMovie(movie._id)
+    MainApi.deleteSavedMovie(movie._id)
       .then(() => {
         const updateSavedCards = savedCards.filter(item => item !== movie );
         setSavedCards(updateSavedCards);
@@ -203,7 +202,7 @@ function App() {
        setIsServerError(false);
       if (allCards.length === 0) {
         setIsPreloaderOpen(true);
-        getMovies()
+        MoviesApi.getMovies()
           .then((movies) => {
             setIsPreloaderOpen(false);
             localStorage.setItem('movies', JSON.stringify(movies));

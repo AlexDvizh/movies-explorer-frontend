@@ -12,13 +12,14 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 function Movies(props) {
   const currentUser = useContext(CurrentUserContext);
   const cardsSavedCurrentUser = props.savedCards.filter(item => item.owner._id === currentUser._id);
+
   
   return (
     <div className="movies">
       <Navigation />
       <SearchForm 
         onShowMovies={props.onShowMovies}
-        onFilterCheckboxClick={props.onFilterCheckboxClick}
+        onCheckboxClick={props.onCheckboxClick}
         isCheckboxActive={props.isCheckboxActive}
       />
       <MoviesCardList
