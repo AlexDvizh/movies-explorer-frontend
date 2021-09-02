@@ -1,26 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../Movies/Movies.css';
 import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Preloader from './Preloader/Preloader';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
-import NavTab from '../NavTab/NavTab';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 
 function Movies(props) {
   const currentUser = useContext(CurrentUserContext);
-  const cardsSavedCurrentUser = props.savedCards.filter(item => item.owner._id === currentUser._id);
+  const cardsSavedCurrentUser = props.savedCards.filter(item => item._id === currentUser._id);
 
-  
+
   return (
     <div className="movies">
-      <Navigation />
+      <Navigation 
+        isNavTabOpen={props.isNavTabOpen}
+        onNavTabClick={props.onNavTabClick}
+        isNavTabClose={props.isNavTabClose}
+      />
       <SearchForm 
         onShowMovies={props.onShowMovies}
         onCheckboxClick={props.onCheckboxClick}
         isCheckboxActive={props.isCheckboxActive}
+      />
+      <Preloader 
+        isOpen={props.isPreloaderOpen} 
       />
       <MoviesCardList
         isServerError={props.isServerError}
@@ -31,11 +37,7 @@ function Movies(props) {
         savedCards={cardsSavedCurrentUser}
         onCardSave={props.onCardSave}
       />
-      <Preloader 
-        isOpen={props.isPreloaderOpen} 
-      />
       <Footer />
-      <NavTab />
     </div>
   )
 }

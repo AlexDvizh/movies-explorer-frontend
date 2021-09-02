@@ -8,7 +8,6 @@ import NavTab from '../NavTab/NavTab';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 
-
 function SavedMovies(props) {
   const currentUser = useContext(CurrentUserContext);
   const cardsSavedCurrentUser = props.savedCards.filter(item => item.owner._id === currentUser._id);
@@ -16,7 +15,11 @@ function SavedMovies(props) {
   
   return (
     <div className="saved-movies">
-      <Navigation />
+      <Navigation 
+        isNavTabOpen={props.isNavTabOpen}
+        onNavTabClick={props.onNavTabClick}
+        isNavTabClose={props.isNavTabClose}
+      />
       <SearchForm 
         onShowMovies={props.onShowMovies} 
         onCheckboxClick={props.onCheckboxClick}

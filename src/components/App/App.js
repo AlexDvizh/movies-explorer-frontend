@@ -26,6 +26,7 @@ function App() {
   const history = useHistory();
   const location = useLocation().pathname;
   const [currentUser, setCurrentUser] = useState({});
+  const [isNavTabOpen,setIsNavTabOpen] = useState(false);
   //авторизация
   const [loggedIn, setLoggedIn] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
@@ -50,7 +51,13 @@ function App() {
   const [maxNumberOfAddedCards, setMaxNumberOfAddedCards] = useState(0);
   const [shownCards, setShownCards] = useState([]);
 
+  const handleMenuClick = () => {
+    setIsNavTabOpen(true);
+  };
 
+  const closeNavTab = () => {
+    setIsNavTabOpen(false);
+  };
 
   function setShownCardsParameters() {
     const pageWidth = window.innerWidth;
@@ -70,12 +77,6 @@ function App() {
   useEffect(() => {
     tokenCheck();
   }, []);
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('movies')) {
-  //     setAllCards(JSON.parse(localStorage.getItem('movies')));
-  //   }
-  // }, []);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -102,6 +103,14 @@ function App() {
       }
     }
   }, []);
+
+
+  // useEffect(() => {
+  //   if (localStorage.getItem('movies')) {
+  //     setAllCards(JSON.parse(localStorage.getItem('movies')));
+  //   }
+  // }, []);
+
 
   function handleRegister(inputs) {
     MainApi.register(inputs)
@@ -168,7 +177,7 @@ function App() {
   }
 
   const handleCardSave = (movie) => {
-    const cardsSavedCurrentUser = savedCards.filter(item => item.owner._id === currentUser._id);
+    const cardsSavedCurrentUser = savedCards.filter(item => item.owner._id === currentUser._id); // удалил item.owner._id
     const isCardSaved = cardsSavedCurrentUser.map(item => item.movieId).includes(movie.id);
 
     if (!isCardSaved) {
@@ -278,7 +287,7 @@ function App() {
       // подготовить то, что будем показывать при отмене фильтра по короткометражкам
       setOldSearchedSavedCards(searchedSavedCards);
       // отфильтровать запрос и отдать в MoviesCardList
-      const shortFilms= filterCardsByCheckbox(searchedSavedCards);
+      const shortFilms = filterCardsByCheckbox(searchedSavedCards);
       setSearchedSavedCards(shortFilms);
     } else {
         setSearchedSavedCards(oldSearchedSavedCards);
@@ -309,6 +318,9 @@ function App() {
             shownCards={shownCards}
             isCheckboxActive={isCheckboxActive}
             onCardSave={handleCardSave}
+            isNavTabOpen={isNavTabOpen}
+            onNavTabClick={handleMenuClick}
+            isNavTabClose={closeNavTab}
           />
           <ProtectedRoute 
             path="/saved-movies"
@@ -321,6 +333,9 @@ function App() {
             onCheckboxClick={handleCheckboxSavedMoviesClick}
             isSearchButtonPressed={isSearchButtonPressed}
             onCardNotSave={handleCardNotSave}
+            isNavTabOpen={isNavTabOpen}
+            onNavTabClick={handleMenuClick}
+            isNavTabClose={closeNavTab}
           />
           <ProtectedRoute
             path="/profile"

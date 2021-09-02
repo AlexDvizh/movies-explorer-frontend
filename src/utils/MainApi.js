@@ -13,7 +13,7 @@ export const register = ({name, email, password}) => {
     return fetch(`${MAIN_URL}/signup`, {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
         },
         body: JSON.stringify({name, email, password})
     })
@@ -31,7 +31,7 @@ export const authorize = ({email, password}) => {
     return fetch(`${MAIN_URL}/signin`, {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
         },
         body: JSON.stringify({email, password})
     })
@@ -47,8 +47,8 @@ export const getUserInfo = () => {
   return fetch(`${MAIN_URL}/users/me`, {
       method: 'GET',
       headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
       }
   })
   .then(checkResponse)
@@ -58,8 +58,8 @@ export const setUserInfo = ({name, email}) => {
     return fetch(`${MAIN_URL}/users/me`, {
         method: 'PATCH',
         headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
         },
         body: JSON.stringify({name, email})
     })
@@ -88,8 +88,8 @@ export const saveMovie = (movie) => {
     return fetch(`${MAIN_URL}/movies`, {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
         },
         body: JSON.stringify({
             country: movie.country,
@@ -113,8 +113,8 @@ export const deleteSavedMovie = (movieId) => {
     return fetch(`${MAIN_URL}/movies/${movieId}`, {
         method: 'DELETE',
         headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
         }
     })
     .then(checkResponse)

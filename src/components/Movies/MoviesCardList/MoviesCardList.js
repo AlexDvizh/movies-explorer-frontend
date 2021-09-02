@@ -12,8 +12,9 @@ function MoviesCardList(props) {
     <>
     { savedMovies ?
       (
-        <section className="movies-cards">
-          <div className="movies-list">
+        <section className="movies-cards movies-card_open" style={{ paddingBottom: "110px" }}>
+          <p className="movies__not-found-text">Ничего не найдено</p>
+          <div className="movies-list movies-list_open">
             {props.isSearchButtonPressed ?
               (props.searchedSavedCards.map(card => 
                 (<MoviesCard 
@@ -33,21 +34,28 @@ function MoviesCardList(props) {
               )
             }
           </div>
-          <div className="more-movies">
-            <button className="more-movies__button">Еще</button>
-          </div>
         </section>
       ) : (
-        <div className="movies-list">
-          {props.shownCards.map(card => 
-            (<MoviesCard 
-                card={card} 
-                key={card.movieId} 
-                savedCards={props.savedCards}
-                onCardNotSave={props.onCardNotSave}
-            />))
-          }
-        </div>
+        <section className={`movies-cards ${props.isOpen && 'movies-card_open'}`}>
+          <p className={`movies__not-found-text ${(props.searchedCards.length === 0) && 'movies__not-found-text_opened'}`}>Ничего не найдено</p>
+          <p className={`movies__error-text ${props.isServerError && 'movies__error-text_opened'}`}>
+              Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
+              Подождите немного и попробуйте ещё раз.
+          </p>
+          <div className={`movies__list ${(props.searchedCards.length !== 0) && 'movies-list_open'}`}>
+            {props.shownCards.map(card => 
+              (<MoviesCard 
+                  card={card} 
+                  key={card.movieId} 
+                  savedCards={props.savedCards}
+                  onCardSave={props.onCardSave}
+              />))
+            }
+          </div>
+          <div className={`more-movies ${(props.searchedCards.length > props.shownCards.length) && 'more-movies_opened'}`}>
+            <button className="more-movies__button" onClick={props.onMoreClick}>Еще</button>
+          </div>
+        </section>
       )
     }
     </>

@@ -31,15 +31,16 @@ function Profile(props) {
           <div className="profile__form-group">
             <input 
               className="profile__input profile__input_name" 
-              id="name" 
-              value={validation.values.name || ''}
+              id="name"
+              name="name"
+              value={validation.values.name}
               onChange={event => validation.handleChange(event)}
               type="text"
               maxLength="40"
               minLength="2"
               required>
             </input>
-            <label className="profile__label" for="name">Имя</label>
+            <label className="profile__label" htmlFor="name">Имя</label>
             <span id="name-error" className={`profile__input-error ${!validation.isInputsValid.name && 'profile__input-error_active'}`}>
               {validation.errors.name}
             </span>
@@ -47,13 +48,14 @@ function Profile(props) {
           <div className="profile__form-group">
             <input 
               className="profile__input profile__input_email" 
-              id="email" 
+              id="email"
+              name="email"
               value={validation.values.email || ''}
               onChange={event => validation.handleChange(event)}
               type="email"
               required>
             </input>
-            <label className="profile__label" for="email">E-mail</label>
+            <label className="profile__label" htmlFor="email">E-mail</label>
             <span id="email-error"className={`profile__input-error ${!validation.isInputsValid.email && 'profile__input-error_active'}`}>
               {validation.errors.email}
             </span>
