@@ -4,7 +4,6 @@ import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
-import NavTab from '../NavTab/NavTab';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 
@@ -13,6 +12,8 @@ function SavedMovies(props) {
   const cardsSavedCurrentUser = props.savedCards.filter(item => item.owner._id === currentUser._id);
   const searchedCardsSavedCurrentUser = props.searchedSavedCards.filter(item => item.owner._id === currentUser._id);
   
+  console.log(searchedCardsSavedCurrentUser)
+
   return (
     <div className="saved-movies">
       <Navigation 
@@ -31,7 +32,6 @@ function SavedMovies(props) {
         searchedSavedCards={searchedCardsSavedCurrentUser}
       />
       <Footer />
-      <NavTab />
     </div>
   )
 }

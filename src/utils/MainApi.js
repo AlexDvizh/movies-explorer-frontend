@@ -1,6 +1,6 @@
-export const MAIN_URL = 'http://localhost:3001';
+export const MAIN_URL = 'https://api.movies.alexdvizh.nomoredomains.club';
 
-const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+const MOVIES_URL = 'https://api.nomoreparties.co';
 
 const checkResponse = (res) => {
     if(res.ok) {
@@ -77,8 +77,8 @@ export const getSavedMovies = () => {
     return fetch(`${MAIN_URL}/movies`, {
         method: 'GET',
         headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
         }
     })
     .then(checkResponse)

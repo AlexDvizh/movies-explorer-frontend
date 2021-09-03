@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import '../Movies/Movies.css';
 import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
@@ -10,7 +10,7 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function Movies(props) {
   const currentUser = useContext(CurrentUserContext);
-  const cardsSavedCurrentUser = props.savedCards.filter(item => item._id === currentUser._id);
+  const cardsSavedCurrentUser = props.savedCards.filter(item => item.owner._id === currentUser._id);
 
 
   return (

@@ -8,6 +8,8 @@ function MoviesCard(props) {
   const savedMovies = (location === '/saved-movies') ? true : false;
   const isCardSaved = props.savedCards.map(item => item.movieId).includes(props.card.id);
 
+  console.log(isCardSaved)
+
   const handleCardSave = () => {
     props.onCardSave(props.card);
   };
@@ -31,11 +33,11 @@ function MoviesCard(props) {
       { savedMovies ?
         (
           <a href={props.card.trailer} target="_blank" rel="noreferrer">
-            <div className="card__img" style={{ backgroundImage: `url(${props.card.image})` }} ></div>
+            <img className="card__img" src={props.card.image} alt="Постер"></img>
           </a>
         ) : (
-          <a href={props.card.trailer} target="_blank" rel="noreferrer">
-            <div className="card__img" style={{ ackgroundImage: `url(${ MoviesApi.MOVIES_URL + props.card.image.url})` }} ></div>
+          <a href={props.card.trailerLink} target="_blank" rel="noreferrer">
+            <img className="card__img" src={ MoviesApi.MOVIES_URL + props.card.image.url} alt="Постер"></img>
           </a>
         )
       }

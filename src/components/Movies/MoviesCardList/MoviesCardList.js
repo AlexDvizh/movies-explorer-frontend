@@ -7,12 +7,14 @@ import '../MoviesCardList/MoviesCardList.css';
 function MoviesCardList(props) {
   const location = useLocation().pathname;
   const savedMovies = (location === "/saved-movies") ? true : false;
+
+  console.log(props.searchedSavedCards);
   
   return (
     <>
     { savedMovies ?
       (
-        <section className="movies-cards movies-card_open" style={{ paddingBottom: "110px" }}>
+        <section className="movies-cards movies-cards_open" style={{ paddingBottom: "200px" }}>
           <p className="movies__not-found-text">Ничего не найдено</p>
           <div className="movies-list movies-list_open">
             {props.isSearchButtonPressed ?
@@ -46,7 +48,7 @@ function MoviesCardList(props) {
             {props.shownCards.map(card => 
               (<MoviesCard 
                   card={card} 
-                  key={card.movieId} 
+                  key={card.id} 
                   savedCards={props.savedCards}
                   onCardSave={props.onCardSave}
               />))
