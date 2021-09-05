@@ -43,7 +43,11 @@ function MoviesCard(props) {
         <h2 className="card__text">{props.card.nameRU}</h2>
         { savedMovies ?
         (
-          <button className="card__like card__like_delete" onClick={handleCardNotSave}></button>
+          <button className="card__like card__like_delete" onClick={() => 
+            {handleCardNotSave();
+              window.location.reload();
+            }
+          }></button>
         ) : (
           <button className={`card__like ${isCardSaved && 'card__like_type_active'}`} onClick={handleCardSave}></button>
         )

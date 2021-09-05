@@ -201,7 +201,7 @@ function App() {
   const handleCardNotSave = (movie) => {
     MainApi.deleteSavedMovie(movie._id)
       .then(() => {
-        const updateSavedCards = savedCards.filter(item => item !== movie );
+        const updateSavedCards = savedCards.filter(item => item !== movie);
         setSavedCards(updateSavedCards);
       })
       .catch((err) => {

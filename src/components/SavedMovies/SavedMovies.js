@@ -22,6 +22,7 @@ function SavedMovies(props) {
       <SearchForm 
         onShowMovies={props.onShowMovies} 
         onCheckboxClick={props.onCheckboxClick}
+        onCardNotSave={props.onCardNotSave}
       />
       <MoviesCardList 
         isSearchButtonPressed={props.isSearchButtonPressed}
