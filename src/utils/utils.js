@@ -1,3 +1,12 @@
+const NUM_OF_CARDS_1280_PX = 12;
+const NUM_OF_CARDS_768_PX = 8;
+const NUM_OF_CARDS_480_PX = 5;
+const NUM_OF_ADDED_CARDS_1280_PX = 4;
+const NUM_OF_ADDED_CARDS_768_PX = 2;
+const NUM_OF_ADDED_CARDS_480_PX = 1;
+const DURATION_SHORT_MOVIES = 40;
+
+
 export const filterCards = (movies, searchText, isCheckboxActive) => {
   if (isCheckboxActive) {
     const filteredByCheckboxMovies = filterCardsByCheckbox(movies);
@@ -14,24 +23,24 @@ export const filterCardsByText = (movies, searchText) => {
 };
 
 export const filterCardsByCheckbox = (movies) => {
-    return movies.filter(item => item.duration <= 40)
+    return movies.filter(item => item.duration <= DURATION_SHORT_MOVIES)
 };
 
 export const showCardsParameters = (pageWidth) => {
   if (pageWidth >= 1280) {
       return {
-        numOfInitialCards: 12,
-        maxNumOfAddedCards: 4
+        numOfInitialCards: NUM_OF_CARDS_1280_PX,
+        maxNumOfAddedCards: NUM_OF_ADDED_CARDS_1280_PX
       }
     } else if (pageWidth >= 768) {
       return {
-        numOfInitialCards: 8,
-        maxNumOfAddedCards: 2
+        numOfInitialCards: NUM_OF_CARDS_768_PX,
+        maxNumOfAddedCards: NUM_OF_ADDED_CARDS_768_PX
       }
     } else {
       return {
-        numOfInitialCards: 5,
-        maxNumOfAddedCards: 1
+        numOfInitialCards: NUM_OF_CARDS_480_PX,
+        maxNumOfAddedCards: NUM_OF_ADDED_CARDS_480_PX
       }
     }
 };

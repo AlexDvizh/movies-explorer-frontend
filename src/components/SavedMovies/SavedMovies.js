@@ -11,8 +11,6 @@ function SavedMovies(props) {
   const currentUser = useContext(CurrentUserContext);
   const cardsSavedCurrentUser = props.savedCards.filter(item => item.owner._id === currentUser._id);
   const searchedCardsSavedCurrentUser = props.searchedSavedCards.filter(item => item.owner._id === currentUser._id);
-  
-  console.log(searchedCardsSavedCurrentUser)
 
   return (
     <div className="saved-movies">

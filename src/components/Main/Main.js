@@ -8,11 +8,13 @@ import Portfolio from './Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import './Main.css';
 
-function Main() {
+function Main(props) {
   
   return (
     <div className="main">
-      <Header />
+      <Header 
+        loggedIn={props.loggedIn}
+      />
       <Promo />
       <AboutProject />
       <Techs />

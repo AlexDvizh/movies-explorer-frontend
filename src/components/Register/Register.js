@@ -30,6 +30,7 @@ function Register(props) {
         onSubmit={handleRegister}
         validation={formValidation}
         buttonText={'Зарегистрироваться'}
+        errMessage={props.errMessage}
       />
       <p className="reg-login-page__login-page">Уже зарегистрированы?
         <Link className="reg-login-page__login-link" to="/signin">Войти</Link>

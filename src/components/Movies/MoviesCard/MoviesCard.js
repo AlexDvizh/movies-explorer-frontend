@@ -8,8 +8,6 @@ function MoviesCard(props) {
   const savedMovies = (location === '/saved-movies') ? true : false;
   const isCardSaved = props.savedCards.map(item => item.movieId).includes(props.card.id);
 
-  console.log(isCardSaved)
-
   const handleCardSave = () => {
     props.onCardSave(props.card);
   };

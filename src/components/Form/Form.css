@@ -38,6 +38,18 @@
   display: flex;
 }
 
+.reg-login__submit-error {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color:#EE3465;
+}
+
+.reg-login-page__button_disabled {
+  background-color: gray;
+}
+
 @media screen and (max-width: 768px) {
   .register__form {
     width: calc(100% - 372px);

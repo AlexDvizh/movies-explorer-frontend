@@ -31,6 +31,7 @@ function App() {
   //авторизация
   const [loggedIn, setLoggedIn] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   //карточки фильмов
   const [isPreloaderOpen, setIsPreloaderOpen] = useState(false);
   const [isMoviesCardListOpen, setIsMoviesCardListOpen] = useState(false);
@@ -113,10 +114,12 @@ function App() {
   function handleRegister(inputs) {
     MainApi.register(inputs)
       .then(() => {
+        setErrorMessage('');
         const {email, password} = inputs;
         handleLogin({email, password})
       })
       .catch((err) => {
+        setErrorMessage(err);
         console.log(err);
       });
   }
@@ -125,12 +128,14 @@ function App() {
     MainApi.authorize(inputs)
         .then((data) => { 
           if (data.token) {
+            setErrorMessage('');
             localStorage.setItem('jwt', data.token);
             tokenCheck();
             history.push('/movies');
           }
         })
         .catch((err) => {
+          setErrorMessage(err);
           console.log(err);
         });
   }
@@ -285,7 +290,9 @@ function App() {
       <div className="page">
         <Switch>
           <Route exact path="/">
-            <Main />
+            <Main 
+              loggedIn={loggedIn}
+            />
           </Route>
           <ProtectedRoute
             path="/movies"
@@ -333,11 +340,13 @@ function App() {
           <Route path="/signup">
             <Register 
               onRegister={handleRegister}
+              errMessage={errorMessage}
               />
           </Route>
           <Route path="/signin">
             <Login 
               onLogin={handleLogin}
+              errMessage={errorMessage}
             />
           </Route>
           <Route>

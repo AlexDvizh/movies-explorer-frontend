@@ -7,8 +7,6 @@ import '../MoviesCardList/MoviesCardList.css';
 function MoviesCardList(props) {
   const location = useLocation().pathname;
   const savedMovies = (location === "/saved-movies") ? true : false;
-
-  console.log(props.searchedSavedCards);
   
   return (
     <>

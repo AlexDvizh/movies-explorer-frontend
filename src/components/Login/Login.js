@@ -30,9 +30,9 @@ function Login(props) {
         validation={formValidation}
         onSubmit={handleLogin}
         buttonText={'Войти'}
+        errMessage={props.errMessage}
       />
       <div>
-        {/* <button className="reg-login-page__button">Войти</button> */}
         <p className="reg-login-page__login-page">Еще не зарегистрированы?
           <Link className="reg-login-page__login-link" to="/signup">Регистрация</Link>
         </p>

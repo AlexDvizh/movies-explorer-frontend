@@ -4,6 +4,7 @@ import '../Form/Form.css';
 
 function Form(props) {
 
+  console.log(`упс: ${props.errMessage}`)
   
   return (
     <form className="register__form" onSubmit={props.onSubmit} noValidate>
@@ -57,6 +58,7 @@ function Form(props) {
           <span className={`register__input-err ${!props.validation.isInputsValid.password && 'register__input-err_active'}`}>{props.validation.errors.password}</span>
         </label>)
       }
+      <p className="reg-login__submit-error">{props.errMessage}</p>
       <button type="submit" className={`reg-login-page__button ${!props.validation.isFormValid && 'reg-login-page__button_disabled'}`} disabled={!props.validation.isFormValid}>{props.buttonText}</button>
     </form>
   )
