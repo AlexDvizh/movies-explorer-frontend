@@ -22,6 +22,7 @@ function MoviesCardList(props) {
                     key={card.movieId} 
                     savedCards={props.savedCards}
                     onCardNotSave={props.onCardNotSave}
+                    setSavedCards={props.setSavedCards}
                 />))
               ) : (
                 props.savedCards.map(card => 
@@ -30,6 +31,7 @@ function MoviesCardList(props) {
                       key={card.movieId} 
                       savedCards={props.savedCards}
                       onCardNotSave={props.onCardNotSave}
+                      setSavedCards={props.setSavedCards}
                   />))
               )
             }

@@ -1,6 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import '../MoviesCard/MoviesCard.css';
 import * as MoviesApi from '../../../utils/MoviesApi';
+import { render } from '@testing-library/react';
+import { useEffect, useMemo } from 'react';
 
 
 function MoviesCard(props) {
@@ -11,10 +13,12 @@ function MoviesCard(props) {
   const handleCardSave = () => {
     props.onCardSave(props.card);
   };
-
+  
   const handleCardNotSave = () => {
       props.onCardNotSave(props.card);
   };
+
+  //console.log(handleCardNotSave())
 
   function timeConversion(minutes) {
     if (Number(minutes) >= 60) {
@@ -43,11 +47,7 @@ function MoviesCard(props) {
         <h2 className="card__text">{props.card.nameRU}</h2>
         { savedMovies ?
         (
-          <button className="card__like card__like_delete" onClick={() => 
-            {handleCardNotSave();
-              window.location.reload();
-            }
-          }></button>
+          <button className="card__like card__like_delete" onClick={handleCardNotSave}></button>
         ) : (
           <button className={`card__like ${isCardSaved && 'card__like_type_active'}`} onClick={handleCardSave}></button>
         )

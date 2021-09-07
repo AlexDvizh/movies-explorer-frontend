@@ -53,6 +53,7 @@ function App() {
   const [maxNumberOfAddedCards, setMaxNumberOfAddedCards] = useState(0);
   const [shownCards, setShownCards] = useState([]);
 
+
   const handleMenuClick = () => {
     setIsNavTabOpen(true);
   };

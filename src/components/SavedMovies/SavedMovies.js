@@ -29,6 +29,7 @@ function SavedMovies(props) {
         onCardNotSave={props.onCardNotSave}
         savedCards={cardsSavedCurrentUser}
         searchedSavedCards={searchedCardsSavedCurrentUser}
+        setSavedCards={props.setSavedCards}
       />
       <Footer />
     </div>
