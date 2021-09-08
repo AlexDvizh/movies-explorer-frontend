@@ -1,4 +1,4 @@
-##movies-explorer-frontend
+### h3 movies-explorer-frontend
 
 Фронтенд сервиса для поиска фильмов
 
