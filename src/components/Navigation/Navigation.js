@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Navigation/Navigation.css';
 import logo from '../../images/logo.svg';
+import NavTab from '../NavTab/NavTab';
 
 
 
-function Navigation() {
+function Navigation(props) {
   
   return (
     <header className="navigation">
@@ -21,7 +22,8 @@ function Navigation() {
           <div className="account-button__icon"></div>
           <Link className="account-button__text" to="/profile">Аккаунт</Link>
         </button>
-        <button className="navigation__hamburger-menu"></button>
+        <button className="navigation__hamburger-menu" onClick={props.onNavTabClick}></button>
+        <NavTab isOpen={props.isNavTabOpen} onClose={props.isNavTabClose}/>
       </div>
     </header>
   )

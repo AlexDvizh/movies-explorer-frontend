@@ -22,10 +22,32 @@
   padding-left: 15px;
 }
 
+.reg-login-page__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 .register__input-err {
+  display: none;
   font-size: 10px;
   line-height: 12px;
   color: #EE3465;
+}
+
+.register__input-err_active {
+  display: flex;
+}
+
+.reg-login__submit-error {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color:#EE3465;
+}
+
+.reg-login-page__button_disabled {
+  background-color: gray;
 }
 
 @media screen and (max-width: 768px) {

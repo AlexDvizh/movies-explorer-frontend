@@ -1,26 +1,66 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import '../MoviesCardList/MoviesCardList.css';
 
 
-function MoviesCardList() {
+function MoviesCardList(props) {
+  const location = useLocation().pathname;
+  const savedMovies = (location === "/saved-movies") ? true : false;
   
   return (
-    <section className="movies-cards">
-      <div className="movies-list">
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-      </div>
-      <div className="more-movies">
-        <button className="more-movies__button">Еще</button>
-      </div>
-    </section>
+    <>
+    { savedMovies ?
+      (
+        <section className="movies-cards movies-cards_open" style={{ paddingBottom: "200px" }}>
+          <p className="movies__not-found-text">Ничего не найдено</p>
+          <div className="movies-list movies-list_open">
+            {props.isSearchButtonPressed ?
+              (props.searchedSavedCards.map(card => 
+                (<MoviesCard 
+                    card={card} 
+                    key={card.movieId} 
+                    savedCards={props.savedCards}
+                    onCardNotSave={props.onCardNotSave}
+                    setSavedCards={props.setSavedCards}
+                />))
+              ) : (
+                props.savedCards.map(card => 
+                  (<MoviesCard 
+                      card={card} 
+                      key={card.movieId} 
+                      savedCards={props.savedCards}
+                      onCardNotSave={props.onCardNotSave}
+                      setSavedCards={props.setSavedCards}
+                  />))
+              )
+            }
+          </div>
+        </section>
+      ) : (
+        <section className={`movies-cards ${props.isOpen && 'movies-card_open'}`}>
+          <p className={`movies__not-found-text ${(props.searchedCards.length === 0) && 'movies__not-found-text_opened'}`}>Ничего не найдено</p>
+          <p className={`movies__error-text ${props.isServerError && 'movies__error-text_opened'}`}>
+              Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
+              Подождите немного и попробуйте ещё раз.
+          </p>
+          <div className={`movies__list ${(props.searchedCards.length !== 0) && 'movies-list_open'}`}>
+            {props.shownCards.map(card => 
+              (<MoviesCard 
+                  card={card} 
+                  key={card.id} 
+                  savedCards={props.savedCards}
+                  onCardSave={props.onCardSave}
+              />))
+            }
+          </div>
+          <div className={`more-movies ${(props.searchedCards.length > props.shownCards.length) && 'more-movies_opened'}`}>
+            <button className="more-movies__button" onClick={props.onMoreClick}>Еще</button>
+          </div>
+        </section>
+      )
+    }
+    </>
   )
 }
 

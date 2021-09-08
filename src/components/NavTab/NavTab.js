@@ -1,11 +1,12 @@
 import '../NavTab/NavTab.css';
 import { Link } from 'react-router-dom';
 
-function NavTab () {
+function NavTab (props) {
+
   return (
-    <div className="nav-menu">
+    <div className={`nav-menu ${props.isOpen && 'nav-menu_opened'}`}>
       <div className="nav-menu__container">
-        <button className="nav-menu__close-button"></button>
+        <button className="nav-menu__close-button" onClick={props.onClose}></button>
         <ul className="nav-menu__links">
           <li className="nav-menu__links-item">
               <Link to="/" className="nav-menu__link">Главная</Link>
